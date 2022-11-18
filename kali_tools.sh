@@ -26,7 +26,7 @@ sudo apt purge -y openjdk-18-jre:amd64 openjdk-18-jre-headless:amd64
 # Update and add necessary packages
 echo "Installing Packages and Tools"
 sudo apt update
-sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound
+sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound tor
 
 #Fix Go PATH
 echo -e "export PATH=\$PATH:\$HOME/go/bin" >> $HOME/.zshrc
@@ -61,3 +61,12 @@ curl --request GET \
   --output 'Nessus-10.4.1-ubuntu1404_amd64.deb'
 sudo dpkg -i Nessus-10.4.1-ubuntu1404_amd64.deb
 rm Nessus-10.4.1-ubuntu1404_amd64.deb
+
+# Install SCNR WEB scanner
+bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
+
+# Add additional user
+sudo useradd -m aws
+sudo usermod -a -G sudo -s /bin/zsh aws
+sudo cp /home/kali/.zshrc /home/aws
+sudo chown aws:aws /home/aws/.zshrc
