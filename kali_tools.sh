@@ -29,8 +29,7 @@ sudo apt update
 sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound
 
 #Fix Go PATH
-echo -e "export PATH=\$PATH:\$HOME/go/bin" >> $HOME/.profile
-source $HOME/.profile
+echo -e "export PATH=\$PATH:\$HOME/go/bin" >> $HOME/.zshrc
 
 # Install go-tools for recon and vuln scan
 sudo rm /usr/bin/httpx
