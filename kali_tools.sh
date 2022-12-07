@@ -65,6 +65,24 @@ rm Nessus-10.4.1-ubuntu1404_amd64.deb
 # Install SCNR WEB scanner
 bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
 
+# Install needed Extensions for Brave Browser
+install_brave_extension () {
+  preferences_dir_path="/opt/brave.com/brave/extensions"
+  pref_file_path="$preferences_dir_path/$1.json"
+  upd_url="https://clients2.google.com/service/update2/crx"
+  sudo mkdir -p "$preferences_dir_path"
+  sudo chown kali:kali -R /opt/brave.com/brave/extensions
+  sudo echo "{" > "$pref_file_path"
+  sudo echo "  \"external_update_url\": \"$upd_url\"" >> "$pref_file_path"
+  sudo echo "}" >> "$pref_file_path"
+  sudo echo Added \""$pref_file_path"\" ["$2"]
+}
+
+install_brave_extension "cmbndhnoonmghfofefkcccljbkdpamhi" "Hack-Tools"
+install_brave_extension "hlkenndednhfkekhgcdicdfddnkalmdm" "Cookie-Editor"
+install_brave_extension "gppongmhjkpfnbhagpmjfkannfbllamg" "Wappalyzer"
+install_brave_extension "moibopkbhjceeedibkbkbchbjnkadmom" "retire.js"
+
 # Add additional user
 sudo useradd -m aws
 sudo usermod -a -G sudo -s /bin/zsh aws
