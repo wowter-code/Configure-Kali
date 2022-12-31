@@ -62,8 +62,30 @@ curl --request GET \
 sudo dpkg -i Nessus-10.4.1-ubuntu1404_amd64.deb
 rm Nessus-10.4.1-ubuntu1404_amd64.deb
 
+#Create Tools directory
+mkdir $HOME/Tools
+cd $HOME/Tools
+
+#Clone multiple tools
+git clone https://github.com/m8sec/CrossLinked.git
+pip3 install -r CrossLinked/requirements.txt
+
+git clone https://github.com/dievus/Oh365UserFinder.git
+pip3 install -r Oh365UserFinder/requirements.txt 
+
+git clone https://github.com/dievus/geeMailUserFinder.git
+pip3 install -r geeMailUserFinder/requirements.txt
+
+git clone --depth 1 https://github.com/drwetter/testssl.sh.git
+
+git clone https://github.com/blacklanternsecurity/TREVORspray.git
+pip3 install -r TREVORspray/requirements.txt
+pip3 install trevorproxy 
+
 # Install SCNR WEB scanner
 bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
+
+cd $HOME
 
 # Install needed Extensions for Brave Browser
 install_brave_extension () {
