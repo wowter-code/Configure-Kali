@@ -80,7 +80,13 @@ git clone --depth 1 https://github.com/drwetter/testssl.sh.git
 
 git clone https://github.com/blacklanternsecurity/TREVORspray.git
 pip3 install -r TREVORspray/requirements.txt
-pip3 install trevorproxy 
+pip3 install trevorproxy
+
+git clone https://github.com/rbsec/dnscan.git
+pip3 install -r dnscan/requirements.txt
+
+git clone https://github.com/MattKeeley/Spoofy.git
+pip3 install -r Spoofy/requirements.txt
 
 # Install SCNR WEB scanner
 bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
