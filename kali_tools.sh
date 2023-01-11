@@ -67,6 +67,8 @@ mkdir $HOME/Tools
 cd $HOME/Tools
 
 #Clone multiple tools
+wget https://raw.githubusercontent.com/wowter-code/Recon/main/autorecon-ng.sh
+
 git clone https://github.com/m8sec/CrossLinked.git
 pip3 install -r CrossLinked/requirements.txt
 
