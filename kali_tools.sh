@@ -91,7 +91,8 @@ git clone https://github.com/MattKeeley/Spoofy.git
 pip3 install -r Spoofy/requirements.txt
 
 # Install SCNR WEB scanner
-bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
+# Disable SCNR installer since there are some issues with this tool. Find more into SCNR repository!
+#bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
 
 cd $HOME
 
