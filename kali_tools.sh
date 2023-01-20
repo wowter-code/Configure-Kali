@@ -73,7 +73,9 @@ git clone https://github.com/m8sec/CrossLinked.git
 pip3 install -r CrossLinked/requirements.txt
 
 git clone https://github.com/dievus/Oh365UserFinder.git
-pip3 install -r Oh365UserFinder/requirements.txt 
+pip3 install -r Oh365UserFinder/requirements.txt
+
+git clone https://github.com/arthepsy/ssh-audit.git
 
 git clone https://github.com/dievus/geeMailUserFinder.git
 pip3 install -r geeMailUserFinder/requirements.txt
