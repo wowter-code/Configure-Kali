@@ -113,6 +113,7 @@ install_brave_extension "cmbndhnoonmghfofefkcccljbkdpamhi" "Hack-Tools"
 install_brave_extension "hlkenndednhfkekhgcdicdfddnkalmdm" "Cookie-Editor"
 install_brave_extension "gppongmhjkpfnbhagpmjfkannfbllamg" "Wappalyzer"
 install_brave_extension "moibopkbhjceeedibkbkbchbjnkadmom" "retire.js"
+install_brave_extension "gcknhkkoolaabfmlnjonogaaifnjlfnp" "FoxyProxy"
 
 # Add additional user
 sudo useradd -m aws
