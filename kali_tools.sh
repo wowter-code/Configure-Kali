@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Intall apt https
-sudo apt get update
+# Install apt https
+sudo apt update
 sudo apt install apt-transport-https
 
 # Add Brave Browser Sources
