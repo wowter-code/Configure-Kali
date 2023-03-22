@@ -57,10 +57,10 @@ sudo apt -y remove burpsuite
 # Install Nessus
 echo "Installing Nessus"
 curl --request GET \
-  --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.4.1-ubuntu1404_amd64.deb' \
-  --output 'Nessus-10.4.1-ubuntu1404_amd64.deb'
-sudo dpkg -i Nessus-10.4.1-ubuntu1404_amd64.deb
-rm Nessus-10.4.1-ubuntu1404_amd64.deb
+  --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.5.0-ubuntu1404_amd64.deb' \
+  --output 'Nessus-10.5.0-ubuntu1404_amd64.deb'
+sudo dpkg -i Nessus-10.5.0-ubuntu1404_amd64.deb
+rm Nessus-10.5.0-ubuntu1404_amd64.deb
 
 #Create Tools directory
 mkdir $HOME/Tools
