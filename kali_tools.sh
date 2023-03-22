@@ -34,8 +34,8 @@ echo -e "export PATH=\$PATH:\$HOME/go/bin" >> $HOME/.zshrc
 # Install go-tools for recon and vuln scan
 sudo rm /usr/bin/httpx
 echo "Installing go-tools"
-go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+go install github.com/projectdiscovery/httpx/cmd/httpx@latest
 go install github.com/sensepost/gowitness@latest
 go install github.com/jaeles-project/gospider@latest
 
