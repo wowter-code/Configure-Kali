@@ -26,10 +26,13 @@ sudo apt purge -y openjdk-18-jre:amd64 openjdk-18-jre-headless:amd64
 # Update and add necessary packages
 echo "Installing Packages and Tools"
 sudo apt update
-sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound tor zaproxy
+sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound tor zaproxy pipx
 
 #Fix Go PATH
-echo -e "export PATH=\$PATH:\$HOME/go/bin" >> $HOME/.zshrc
+echo -e "export PATH=\$PATH:\$HOME/go/bin:$HOME/.local/bin/bbot" >> $HOME/.zshrc
+
+# Install bbot recon tool
+pipx install bbot
 
 # Install go-tools for recon and vuln scan
 sudo rm /usr/bin/httpx
