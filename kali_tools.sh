@@ -23,7 +23,7 @@ rm google-chrome-stable_current_amd64.deb
 # Update and add necessary packages
 echo "Installing Packages and Tools"
 sudo apt update
-sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound tor zaproxy pipx
+sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound tor zaproxy pipx dnstwist sublist3r
 
 # Install Updog
 pipx install updog
