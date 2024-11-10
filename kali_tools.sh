@@ -20,16 +20,17 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
 
-# Remove Java 18
-sudo apt purge -y openjdk-18-jre:amd64 openjdk-18-jre-headless:amd64
-
 # Update and add necessary packages
 echo "Installing Packages and Tools"
 sudo apt update
 sudo apt install -y python3-pip default-jdk brave-browser feroxbuster golang sublime-text neo4j bloodhound tor zaproxy pipx
 
-#Fix Go PATH
-echo -e "export PATH=\$PATH:\$HOME/go/bin:$HOME/.local/bin/bbot" >> $HOME/.zshrc
+# Install Updog
+pipx install updog
+
+#Fix PATH
+echo -e "export PATH=\$PATH:\$HOME/go/bin:$HOME/.local/bin/bbot:$HOME/.local/bin/" >> $HOME/.zshrc
+source .zshrc
 
 # Install bbot recon tool
 pipx install bbot
@@ -37,33 +38,19 @@ pipx install bbot
 # Install go-tools for recon and vuln scan
 sudo rm /usr/bin/httpx
 echo "Installing go-tools"
-go install github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 go install github.com/projectdiscovery/httpx/cmd/httpx@latest
 go install github.com/sensepost/gowitness@latest
 go install github.com/jaeles-project/gospider@latest
 
-# Install VSCode
-echo "Installing VSCode"
-curl -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64" -o code.deb
-sudo dpkg -i code.deb
-rm code.deb
-
 # Install BurpPro
 echo "Installing BurpPro"
-curl -L "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2022.9.5&type=Linux" -o burp_pro.sh
+curl -L "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.9.5&type=Linux" -o burp_pro.sh
 bash burp_pro.sh
 rm burp_pro.sh
 
 # Remove BurpCommunity
 sudo apt -y remove burpsuite
-
-# Install Nessus
-echo "Installing Nessus"
-curl --request GET \
-  --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.5.0-ubuntu1404_amd64.deb' \
-  --output 'Nessus-10.5.0-ubuntu1404_amd64.deb'
-sudo dpkg -i Nessus-10.5.0-ubuntu1404_amd64.deb
-rm Nessus-10.5.0-ubuntu1404_amd64.deb
 
 #Create Tools directory
 mkdir $HOME/Tools
@@ -73,31 +60,41 @@ cd $HOME/Tools
 wget https://raw.githubusercontent.com/wowter-code/Recon/main/autorecon-ng.sh
 
 git clone https://github.com/m8sec/CrossLinked.git
-pip3 install -r CrossLinked/requirements.txt
+cd CrossLinked
+pipx install .
+cd ..
 
 git clone https://github.com/dievus/Oh365UserFinder.git
-pip3 install -r Oh365UserFinder/requirements.txt
+cd Oh365UserFinder
+pipx install .
+cd ..
 
 git clone https://github.com/arthepsy/ssh-audit.git
-
-git clone https://github.com/dievus/geeMailUserFinder.git
-pip3 install -r geeMailUserFinder/requirements.txt
 
 git clone --depth 1 https://github.com/drwetter/testssl.sh.git
 
 git clone https://github.com/blacklanternsecurity/TREVORspray.git
-pip3 install -r TREVORspray/requirements.txt
-pip3 install trevorproxy
+cd TREVORspray
+pipx install .
+pipx install trevorproxy
+cd ..
 
 git clone https://github.com/rbsec/dnscan.git
-pip3 install -r dnscan/requirements.txt
+cd dnscan
+pipx install .
+cd ..
 
 git clone https://github.com/MattKeeley/Spoofy.git
-pip3 install -r Spoofy/requirements.txt
+cd Spoofy
+pipx install .
+cd ..
 
-# Install SCNR WEB scanner
-# Disable SCNR installer since there are some issues with this tool. Find more into SCNR repository!
-#bash -c "$(curl -sSL https://raw.githubusercontent.com/scnr/installer/main/install.sh)"
+git clone https://github.com/iampopg/office365_validator.git
+cd office365_validator
+pipx install .
+cd ..
+
+git clone https://github.com/Raikia/UhOh365.git
 
 cd $HOME
 
@@ -119,9 +116,3 @@ install_brave_extension "hlkenndednhfkekhgcdicdfddnkalmdm" "Cookie-Editor"
 install_brave_extension "gppongmhjkpfnbhagpmjfkannfbllamg" "Wappalyzer"
 install_brave_extension "moibopkbhjceeedibkbkbchbjnkadmom" "retire.js"
 install_brave_extension "gcknhkkoolaabfmlnjonogaaifnjlfnp" "FoxyProxy"
-
-# Add additional user
-sudo useradd -m aws
-sudo usermod -a -G sudo -s /bin/zsh aws
-sudo cp /home/kali/.zshrc /home/aws
-sudo chown aws:aws /home/aws/.zshrc
